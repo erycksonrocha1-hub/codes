@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eryckson Rocha | Portfólio Designer</title>
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="index.css">
 </head>
@@ -22,6 +24,7 @@
             <p class="subtitulo">Designer Gráfico & Identidade Visual</p>
           </div>
         </div>
+
         <nav class="menu-nav">
           <ul>
             <li><a href="#sobre">Sobre</a></li>
@@ -41,24 +44,27 @@
       <section id="trabalhos">
         <h2>Meus trabalhos</h2>
         <div class="galeria">
-          <div class="projeto-card" onclick="abrirModal('projeto1.jpg')">
-            <img src="foods.png" alt="Projeto 1">
-            <div class="projeto-overlay"><span><i class="fa-solid fa-magnifying-glass-plus"></i> Ver Detalhes</span></div>
+          <div class="projeto-card" onclick="abrirModal('img/projeto1.jpg')">
+            <img src="img/projeto1.jpg" alt="Projeto 1">
+            <div class="projeto-overlay"><span><i class="fa-solid fa-expand"></i> Ampliar Arte</span></div>
           </div>
-          <div class="projeto-card" onclick="abrirModal('projeto2.jpg')">
-            <img src="lemo.png" alt="Projeto 2">
-            <div class="projeto-overlay"><span><i class="fa-solid fa-magnifying-glass-plus"></i> Ver Detalhes</span></div>
+          
+          <div class="projeto-card" onclick="abrirModal('img/projeto2.jpg')">
+            <img src="img/projeto2.jpg" alt="Projeto 2">
+            <div class="projeto-overlay"><span><i class="fa-solid fa-expand"></i> Ampliar Arte</span></div>
           </div>
-          <div class="projeto-card" onclick="abrirModal('projeto3.jpg')">
-            <img src="projeto3.jpg" alt="Projeto 3">
-            <div class="projeto-overlay"><span><i class="fa-solid fa-magnifying-glass-plus"></i> Ver Detalhes</span></div>
+          
+          <div class="projeto-card" onclick="abrirModal('img/projeto3.jpg')">
+            <img src="img/projeto3.jpg" alt="Projeto 3">
+            <div class="projeto-overlay"><span><i class="fa-solid fa-expand"></i> Ampliar Arte</span></div>
           </div>
         </div>
       </section>
 
       <section id="contato">
         <h2>Contato</h2>
-        <p>Vamos criar algo incrível juntos?</p>
+        <p>Vamos criar algo incrível juntos? Entre em contato por um dos canais abaixo:</p>
+        
         <div class="botoes-contato">
           <a href="https://wa.me/5584994301573" target="_blank" class="btn-contato">
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -82,15 +88,23 @@
 
   <script>
     function abrirModal(src) {
-      document.getElementById("modalLightbox").style.display = "flex";
-      document.getElementById("imgModal").src = src;
-      // Aplica o desfoque no conteúdo do site
-      document.getElementById("conteudo-site").classList.add("desfocado");
+      const modal = document.getElementById("modalLightbox");
+      const img = document.getElementById("imgModal");
+      const site = document.getElementById("conteudo-site");
+
+      modal.style.display = "flex";
+      img.src = src; 
+      site.classList.add("desfocado");
+      document.body.style.overflow = "hidden"; // Trava o scroll do fundo
     }
+
     function fecharModal() {
-      document.getElementById("modalLightbox").style.display = "none";
-      // Remove o desfoque
-      document.getElementById("conteudo-site").classList.remove("desfocado");
+      const modal = document.getElementById("modalLightbox");
+      const site = document.getElementById("conteudo-site");
+
+      modal.style.display = "none";
+      site.classList.remove("desfocado");
+      document.body.style.overflow = "auto"; // Devolve o scroll
     }
   </script>
 

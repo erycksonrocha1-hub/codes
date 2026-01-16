@@ -10,17 +10,17 @@ body {
   background-color: #f8f9fa;
   color: #2d2d2d;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-/* Efeito de Blur no fundo */
+/* EFEITO DE DESFOQUE NO CONTEÚDO */
 #conteudo-site {
-  transition: filter 0.3s ease;
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 #conteudo-site.desfocado {
-  filter: blur(8px);
-  pointer-events: none; /* Impede cliques no fundo enquanto o modal está aberto */
+  filter: blur(10px) grayscale(20%);
+  transform: scale(0.98);
+  pointer-events: none;
 }
 
 .limite-largura {
@@ -79,9 +79,28 @@ header.header-container {
   font-weight: bold;
   font-size: 0.85rem;
   text-transform: uppercase;
+  transition: 0.3s;
 }
 
 .menu-nav ul li a:hover { color: #328000; }
+
+/* Seções */
+section { padding: 50px 0; }
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: #328000;
+  margin-top: 8px;
+}
 
 /* Galeria */
 .galeria {
@@ -96,7 +115,7 @@ header.header-container {
   height: 250px;
   border-radius: 12px;
   overflow: hidden;
-  cursor: zoom-in; /* Cursor de lupa como no Behance */
+  cursor: zoom-in; /* Lupa de aumento */
   background-color: #ddd;
 }
 
@@ -129,25 +148,29 @@ header.header-container {
 .projeto-card:hover img { transform: scale(1.1); }
 .projeto-card:hover .projeto-overlay { opacity: 1; }
 
-/* LIGHTBOX (IMAGEM AMPLIADA) */
+/* LIGHTBOX (IMAGEM AMPLIADA COM RESPIRO) */
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.85); /* Levemente menos opaco para ver o blur */
+  background-color: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  cursor: zoom-out;
+  cursor: zoom-out; /* Lupa de diminuir */
+  padding: 50px; /* GARANTE O RESPIRO LATERAL */
 }
 
 .modal-conteudo {
-  max-width: 85%; /* Dá o "respiro" lateral que você notou */
-  max-height: 85%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 8px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.8);
-  animation: zoom 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* Animação mais suave */
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  object-fit: contain;
+  animation: zoom 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 @keyframes zoom {
@@ -163,12 +186,14 @@ header.header-container {
   cursor: pointer;
 }
 
-/* Seções e Botões */
-section { padding: 50px 0; }
-h2 { font-size: 1.8rem; margin-bottom: 25px; text-transform: uppercase; }
-h2::after { content: ''; display: block; width: 50px; height: 4px; background-color: #328000; margin-top: 8px; }
+/* Contato */
+.botoes-contato {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
 
-.botoes-contato { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; }
 .btn-contato {
   padding: 12px 28px;
   border: 2px solid #328000;
@@ -178,6 +203,7 @@ h2::after { content: ''; display: block; width: 50px; height: 4px; background-co
   border-radius: 8px;
   transition: 0.3s;
 }
+
 .btn-contato:hover { background: #328000; color: white; }
 
 /* Responsividade */
